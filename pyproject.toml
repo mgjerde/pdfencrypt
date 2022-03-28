@@ -5,7 +5,7 @@ description = "program for å kryptere pdf'er"
 authors = ["Marius Gjerde <marius@mgjerde.no>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 PyPDF3 = "^1.0.6"
 
 [tool.poetry.dev-dependencies]

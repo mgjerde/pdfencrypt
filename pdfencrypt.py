@@ -1,11 +1,12 @@
-from fileinput import filename
+import secrets
+import string
 import PyPDF3
 import os.path
 import sys
 import argparse
 
-def random():
-    return 42
+def generatepassword(length):
+    return secrets.token_urlsafe(length)
 
 parser = argparse.ArgumentParser(description='Encrypt R Us', usage='%(prog)s filename [options]')
 parser.add_argument('pdffile', metavar='filename', type=argparse.FileType('rb'), help='The file you want to encrypt')
@@ -17,11 +18,17 @@ parser.add_argument('--user', metavar='passphrase', help='Set user password')
 args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
 
 
+try:
+    pdfReader = PyPDF3.PdfFileReader(args.pdffile,strict=False)
+except Exception as errormsg:
+    print(errormsg)
+    sys.exit(1)
 
 
-pdfReader = PyPDF3.PdfFileReader(args.pdffile)
+print(generatepassword(12))
 
 # args.pdffile.close()
+
 
 print('Argument List:', args )
 
