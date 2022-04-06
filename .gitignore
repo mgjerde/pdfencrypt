@@ -1,2 +1,5 @@
 *.pdf
 *.ipynb
+build/
+dist/
+__pycache__
